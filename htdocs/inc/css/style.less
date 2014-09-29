@@ -1,0 +1,119 @@
+
+html, body {
+	font-family: Arial;
+	padding: 0px;
+	margin: 0px;
+}
+
+header {
+	padding: 0px;
+	margin: 0px;
+	position: fixed;
+	z-index: 1000;
+	top: 0px;
+	left: 0px;
+	width: 48px;
+	height: 100%;
+	background-color: #EEE;
+	border-right: 2px solid #666;
+}
+
+#Logo {
+	width: 48px;
+	height: 48px;
+	background-color: #CC0;
+}
+
+#Loading {
+	width: 48px;
+	height: 48px;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	background-color: #0A0;
+	overflow: hidden;
+	opacity: 0;
+	
+	transition: opacity 1000ms ease;
+	
+	.Descriptions {
+		position: absolute;
+		bottom: 12px;
+		left: 52px;
+		background-color: #444;
+		border-radius: 3px;
+		color: #CCC;
+		font-size: 10px;
+		padding: 6px 12px;
+		white-space: nowrap;
+		opacity: 0;
+		
+		transition: opacity 200ms ease;
+	}
+
+	&.isLoading {
+		background-color: #F00;
+		overflow: visible;
+		opacity: 1;
+
+		&:hover .Descriptions {
+			opacity: 1;
+		}
+	}
+}
+
+.Icon {
+	font-size: 0px;
+}
+
+.Container {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 12px 12px 6px 60px;
+	
+	& > a {
+		&, &:hover, &:visited, &:active {
+			color: black;
+			text-decoration: none;
+		}
+	}
+	
+	.Project {
+		padding: 12px;
+		border: 1px solid black;
+		border-radius: 6px;
+		width: 250px;
+		height: 120px;
+		margin-right: 6px;
+		margin-bottom: 6px;
+		display: inline-block;
+		cursor: pointer;
+		
+		.Title {
+			font-weight: bold;
+		}
+	}
+}
+
+.ContainerFooter {
+	width: 100%;
+	text-align: center;
+	padding-left: 50px;
+	box-sizing: border-box;
+
+	.Icon {
+		display: block;
+		opacity: 0;
+		background-color: #800;
+		border-radius: 3px;
+		width: 48px;
+		height: 48px;
+		margin: 0px auto;
+		
+		transition: opacity 1s ease;
+	}
+	
+	&.isLoading .Icon {
+		opacity: 1;
+	}
+}

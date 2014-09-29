@@ -1,0 +1,4 @@
+RewriteEngine Off
+RewriteCond %{REQUEST_URI} !^/inc/ [NC]
+RewriteCond %{REQUEST_URI} !^/[^/]+.php [NC]
+RewriteRule ^(.*)$ /index.php?path=/$1 [QSA,L]

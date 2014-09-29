@@ -1,0 +1,120 @@
+
+nav {
+	a, a:hover, a:active, a:visited {
+		color: black;
+		display: block;
+		overflow: visible;
+		text-decoration: none;
+	}
+	a {
+		height: 100%;
+		
+		.Text:after {
+			content: "";
+			width: 12px;
+			height: 12px;
+			background-color: #A00;
+			position: absolute;
+			top: 50%;
+			right: 2px;
+			margin-top: -6px;
+			display: none;
+		}
+
+		&:hover .Text:after {
+			display: block;
+		}
+	}
+
+	ul.Main {
+		list-style: none;
+		padding: 0px;
+		margin: 0px;
+		font-size: 20px;
+		
+		& > li {
+			width: 48px;
+			height: 32px;
+			background-color: #AAA;
+			margin-top: 4px;
+			cursor: pointer;
+			overflow: hidden;
+			position: relative;
+			top: 0px;
+			
+			transition: width 200ms ease;
+			
+			& > a {
+				white-space: nowrap;
+				
+				& > .Icon {
+					width: 32px;
+					height: 32px;
+					margin: 0px 7px;
+					display: inline-block;
+					background-color: #0A0;
+					position: absolute;
+					top: 0px;
+					left: 0px;
+				}
+				& > .Text {
+					font-weight: bold;
+					line-height: 32px;
+					opacity: 0;
+					display: block;
+					position: absolute;
+					top: 0px;
+					right: 0px;
+					padding-right: 60px;
+
+					transition: padding 200ms ease;
+				}
+			}
+		
+			&:hover {
+				overflow: visible;
+				width: 260px;
+				
+				& > a > .Text {
+					opacity: 1;
+					padding-right: 18px;
+				}
+				
+				& > .MainSub {
+					opacity: 1;
+				}
+			}
+		}
+		
+		ul.MainSub {
+			list-style: none;
+			padding: 0px;
+			margin: 0px;
+			position: absolute;
+			top: 32px;
+			left: 52px;
+			width: 208px;
+			background-color: #BBB;
+			font-size: 12px;
+			font-size: 12px;
+			overflow: hidden;
+			opacity: 0;
+			
+			transition: opacity 200ms 200ms ease;
+			
+			& > li {
+				position: relative;
+				top: 0px;
+				
+				& > a {
+					padding: 0px 18px 0px 8px;
+					height: 24px;
+					line-height: 24px;
+				}
+				&:hover {
+					background-color: #888;
+				}
+			}
+		}
+	}
+}
