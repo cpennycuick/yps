@@ -12,15 +12,7 @@ abstract class Tool {
 			throw new Exception('Already started.');
 		}
 
-		$reflectionClass  = new ReflectionClass($className) ;
-		$constructor = $reflectionClass->getConstructor() ;
-
-		$class = $reflectionClass->newInstanceWithoutConstructor() ;
-
-		$constructor->setAccessible(true) ;
-		$constructor->invokeArgs($class, func_get_args());
-
-		return $class;
+		return new Static();
 	}
 
 }
