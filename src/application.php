@@ -38,17 +38,23 @@ class Application extends Tool {
 		$this->errorHandler = ErrorHandler::start()
 			->initErrorHandler()
 			->initShutdownHook(function ($code, $message, $file) {
+				$errorMessage = "Error #{$code}: {$message}\n{$file}";
+
+				error_log($errorMessage);
+
 				echo json_encode([
 					'Code' => 400,
-					'Error' => "Error #{$code}: {$message}\n{$file}",
+					'Error' => $errorMessage,
 				]);
 			})
 			->initExceptionHandler(
 				Exception::class,
 				function ($e) {
+					error_log($e->getMessage()."\nTrace: ".$e->getTraceAsString());
+
 					$this->response->setDataValue('Code', 400);
 					$this->response->setDataValue('Error', $e->getMessage());
-					$this->response->setDataValue('Trace', $e->getTrace());
+					$this->response->setDataValue('Trace', $e->getTraceAsString());
 
 					$this->output();
 				}
