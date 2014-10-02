@@ -3,7 +3,7 @@ app.request = {};
 (function (request) {
 
 	request.postJSON = function (path, data) {
-		var url = 'https://php_test-c9-chrispennycuick.c9.io/index.php?path=/'+(path || '');
+		var url = 'https://php_test-c9-chrispennycuick.c9.io/app.php?path=/v1/'+(path || '');
 		var dfd = $.Deferred();
 
 		$.ajax({

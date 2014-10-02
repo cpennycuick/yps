@@ -1,15 +1,16 @@
 <?php
 
 class Router extends Tool {
-	
+
 	private $map = [];
-	
+
 	public function register($path, $action) {
 		$pathPattern = $this->convertToRegExp($path);
 		$this->map[$pathPattern] = $action;
 	}
 
 	private function convertToRegExp($path) {
+		$path = preg_replace('/:([a-z]+)/i', '(?<$1>[a-zA-Z]+)', $path);
 		return '#^/'.$path.'/?$#';
 	}
 
@@ -17,7 +18,14 @@ class Router extends Tool {
 		$matches = [];
 		foreach ($this->map as $pathPattern => $action) {
 			if (preg_match($pathPattern, $path, $matches)) {
-				return $action($matches);
+				$data = [];
+				foreach ($matches as $key => $value) {
+					if (!is_int($key)) {
+						$data[$key] = $value;
+					}
+				}
+
+				return $action($data);
 			}
 		}
 
@@ -25,5 +33,5 @@ class Router extends Tool {
 		print_r(array_keys($this->map));
 		return [null, null];
 	}
-	
+
 }
